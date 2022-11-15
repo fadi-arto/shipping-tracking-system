@@ -1,9 +1,9 @@
-const { creat } = require('../Models/addcar');
+const { Creat } = require('../Models/addcar');
 const car = require('.././views/model/cars');
 
 
 
-const creat = (req, res) => {
+const creatcar = (req, res) => {
     const data = req.body;
     car(data,(err, car) => {
         if(err) {
@@ -15,3 +15,5 @@ const creat = (req, res) => {
         }
     })
 }
+
+module.exports = creatcar;
