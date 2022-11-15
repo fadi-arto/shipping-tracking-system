@@ -116,9 +116,6 @@ app.get('/add-cars',(req ,res)=>{
     })
 
 
-
-
-
     app.get('/add-center',(req ,res)=>{
       const center = new centers({
         _id : 'qrw55qew',
@@ -148,7 +145,7 @@ app.get('/add-cars',(req ,res)=>{
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/adcar',carRouter);
+app.use('/mangecar',carRouter);
 
 
 
