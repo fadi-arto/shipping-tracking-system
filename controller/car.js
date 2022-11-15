@@ -1,11 +1,11 @@
-const { Creat } = require('../Models/addcar');
+const { addcar } = require('../Models/addcar');
 const car = require('.././views/model/cars');
 
 
 
 const creatcar = (req, res) => {
     const data = req.body;
-    car(data,(err, car) => {
+    addcar(data,(err, car) => {
         if(err) {
             console.log(err)
             res.send(err)

@@ -5,7 +5,7 @@ const car = require('.././views/model/cars');
 
 
 const  addcar = async (data , result) =>{
- car.addcar([data],(err , results)=>{
+    car.create(data,(err , results)=>{
     if(err){
    console.log(err)
    result(err, null)
