@@ -1,8 +1,8 @@
 const express = require('express');
-const creat = require('../controller/car');
+const creatcar = require('../controller/car');
 var router  =express.Router();
 
-router.post('/' ,creat );
+router.post('/' ,creatcar );
 
 
 
