@@ -14,4 +14,10 @@ const car = require('../views/model/cars');
 }
       
 
-module.exports =  deletecarById ;
+module.exports = { deletecarById } ;
+
+
+
+
+
+

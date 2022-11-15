@@ -1,6 +1,8 @@
 const { addcar } = require('../Models/addcar');
 const { deletecarById } = require('../Models/deletcar')
 const car = require('.././views/model/cars');
+const {UpdatecarById} = require('../Models/updatecar');
+
 
 //give the data from front end to models after that push to mongoose
 
@@ -32,9 +34,23 @@ const deletecar = (req,res)=>{
 
 }
 
+const Updatecaree = (req, res) => {
+    const data  = req.body;
+    const id    = req.params.id;
+    UpdatecarById(data ,id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.send(results);
+        }
+    });
+
+}
 
 
 
 
+module.exports = { creatcar , deletecar , Updatecaree};
 
-module.exports = { creatcar , deletecar};
+
+

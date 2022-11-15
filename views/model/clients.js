@@ -26,7 +26,7 @@ const ClientSchema = new mongoose.Schema({
     services  : {
      
      type : {
-        _id : String ,
+        id : String ,
         name : String , 
         name_of_company : String,
         time : Date 

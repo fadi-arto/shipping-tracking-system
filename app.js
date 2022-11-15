@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cars = require( './views/model/cars');
 const clients = require('./views/model/clients');
 const company = require('./views/model/company');
-const centers = require('./views/model/centers')
+const centers = require('./views/model/centers');
 
 
 var path = require('path');
@@ -13,6 +13,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carRouter = require('./routes/car');
+var ClintRouter = require('./routes/clint');
+var CentersRouter = require('./routes/center');
 
 
 
@@ -20,7 +22,7 @@ var app = express();
 
 const dbURI = 'mongodb+srv://tarcking:12345@nudetuts.vtv2cor.mongodb.net/note-tuts?retryWrites=true&w=majority' ;  
 mongoose.connect(dbURI , {useNewUrlParser : true , useUnifiedTopology : true})
-  .then((result)=> app.listen(3001))
+  .then((result)=> app.listen(8002))
   .catch((err)=> console.log(err));
 
 
@@ -116,22 +118,7 @@ app.get('/add-cars',(req ,res)=>{
     })
 
 
-    app.get('/add-center',(req ,res)=>{
-      const center = new centers({
-        _id : 'qrw55qew',
-        Location : 'under bridge' ,
-        Name  : 'center2'
-      
-      });
-      
-      center.save()
-      .then((result)=>{
-        res.send(result)
-      })
-      .catch((err)=>{
-      console.log(err)
-      });
-      })
+    
 
 
   
@@ -146,6 +133,8 @@ app.get('/add-cars',(req ,res)=>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/mangecar',carRouter);
+app.use('/mangeclint' , ClintRouter);
+app.use('/mangecenter' ,CentersRouter);
 
 
 
