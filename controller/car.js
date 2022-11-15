@@ -21,7 +21,7 @@ const creatcar = (req, res) => {
 
 const deletecar = (req,res)=>{
     const id = req.params.id;
-    deletecarById(_id ,(err,results)=>{
+    deletecarById(id ,(err,results)=>{
         if(err){
             res.send(err)
         }

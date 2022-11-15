@@ -1,11 +1,11 @@
 const express = require('express');
 const creatcar = require('../controller/car');
-const deletcar = require('../controller/car')
-var router  =express.Router();
+const deletecar = require('../controller/car')
+var router  = express.Router();
 
 
-//router.post('/' ,creatcar );
-router.delete('/nazer/:id' , deletcar);
+router.post('/' ,creatcar );
+router.delete('/nazer/:id' , deletecar);
 
 
 
