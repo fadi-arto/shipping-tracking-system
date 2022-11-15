@@ -1,0 +1,22 @@
+{
+  "name": "shipping-jp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bootstrap-jquery": "^3.3.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "hbs": "^4.2.0",
+    "http-errors": "~1.6.3",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.6.0",
+    "validator": "^13.7.0"
+  }
+}
