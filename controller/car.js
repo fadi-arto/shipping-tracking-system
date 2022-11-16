@@ -1,7 +1,7 @@
-const { addcar } = require('../Models/addcar');
-const { deletecarById } = require('../Models/deletcar')
-const car = require('.././views/model/cars');
-const {UpdatecarById} = require('../Models/updatecar');
+const { addcar } = require('../Models/Car/addcar');
+const { deletecarById } = require('../Models/Car/deletcar')
+const car = require('../model/cars');
+const {UpdatecarById} = require('../Models/Car/updatecar');
 
 
 //give the data from front end to models after that push to mongoose

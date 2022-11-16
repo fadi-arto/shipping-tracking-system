@@ -1,5 +1,8 @@
-const { addcenter } = require('../Models/addcenter');
-const center = require('.././views/model/centers');
+const { addcenter } = require('../Models/Center/addcenter');
+const center = require('../model/centers');
+const  {deletecenterById} = require('../Models/Center/deletcenter');
+const { UpdatecenterById } = require('../Models/Center/updatecenter');
+
 
 
 
@@ -18,4 +21,39 @@ const creatcenter = (req, res) => {
     })
 }
 
-module.exports = { creatcenter };
+
+const deletcenter = (req,res)=>{
+    const id = req.params.id;
+    deletecenterById(id, (err,result)=>{
+   if(err){
+       res.send(err);
+   }
+   else{
+       res.send(result);
+   }
+   
+   })    
+   
+   }
+
+
+
+   const Updatecenter = (req, res) => {
+    const data  = req.body;
+    const id    = req.params.id;
+    UpdatecenterById(data ,id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.send(results);
+        }
+    });
+
+}
+ 
+
+
+
+
+
+module.exports = { creatcenter  , deletcenter , Updatecenter};

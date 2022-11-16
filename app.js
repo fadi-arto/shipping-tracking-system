@@ -1,10 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
 const mongoose = require('mongoose');
-const cars = require( './views/model/cars');
-const clients = require('./views/model/clients');
-const company = require('./views/model/company');
-const centers = require('./views/model/centers');
+const cars = require( './model/cars');
+const clients = require('./model/clients');
+const company = require('./model/company');
+const centers = require('./model/centers');
 
 
 var path = require('path');

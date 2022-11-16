@@ -1,7 +1,7 @@
-const { addclint } = require('../Models/addclint');
-const { deletclintbyid } = require('../Models/deleteclint')
-const clients = require('../views/model/clients');
-const { UpdateclintById } = require('../Models/updateclint'); 
+const { addclint } = require('../Models/Cliant/addclint');
+const { deletclintbyid } = require('../Models/Cliant/deleteclint')
+const clients = require('../model/clients');
+const { UpdateclintById } = require('../Models/Cliant/updateclint'); 
 
 
 
