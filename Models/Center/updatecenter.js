@@ -5,7 +5,7 @@ const center= require('../../model/centers')
 
 const UpdatecenterById = (data, id, result) => { 
     center.findByIdAndUpdate(id,
-        { _id:data._id , Location:data.Location , Name:data.Name },
+        { Location:data.Location , Name:data.Name },
         {new: true },
         (err, results) => {
             if (err) {

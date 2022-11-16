@@ -2,12 +2,10 @@ const mongoose = require('mongoose');
 const {isEmail} = require('validator');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const { minlenghth }  = require('validator');
 
 const ClientSchema = new mongoose.Schema({
-    _id : {
-        type : String,
-        required : true,         
-    },
+ 
     Name : {
         type : String , 
         required : [true , 'pleas enter the name'] , 
@@ -16,12 +14,13 @@ const ClientSchema = new mongoose.Schema({
     Email : {
         type : String, 
         
-        //validate : [isEmail , 'pleas enter a valid email '],
+        validate : [isEmail,'pleas enter the true email'],
         required : [true , 'pleas enter the email'],
     },
     Password : {
         type : String ,
-        required : [true , 'pleas enter the password'] ,
+        required : true ,
+        minlenghth : [6 , 'minumum password is 6 characters'],
     },
     services  : {
      

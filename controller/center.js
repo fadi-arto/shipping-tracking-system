@@ -56,4 +56,4 @@ const deletcenter = (req,res)=>{
 
 
 
-module.exports = { creatcenter  , deletcenter , Updatecenter};
+module.exports = { creatcenter  , deletcenter , Updatecenter };

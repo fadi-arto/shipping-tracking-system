@@ -1,24 +1,37 @@
-const mongoose = require('mongoose');
-const {isPassword} = require('validator');
+const mongoose = require('mongoose');;
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const {isEmail} = require('validator');
+const validator = require('validator');
+const { minlenghth }  = require('validator');
 
 const CompanySchema = new mongoose.Schema({
-    _id : {
-        type : String,
-        required : true,         
-    },
     Name : {
         type : String , 
         required : true ,
 
     },
+    Email : {
+    type : String , 
+    unique : true ,
+    required : true,
+    validate : [isEmail,'pleas enter the true email'],
+
+    },
     
     Password : {
         type : String ,
-        required : true 
-        //validate : [isPassword , 'pleas enter a valid password']
+        required : true ,
+        minlenghth : [6 , 'minumum password is 6 characters'],
+    } ,
+    center : {
+    type : Array ,
+    },
+    Car : {
+        type : Array ,
+        required: true ,
     }
+
     
 },{ timestamps : true});
 
