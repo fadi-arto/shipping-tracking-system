@@ -10,13 +10,13 @@ const CompanySchema = new mongoose.Schema({
     },
     Name : {
         type : String , 
-        required : [true , 'pleas enter the name'] , 
+        required : true ,
 
     },
     
     Password : {
         type : String ,
-        required : [true , 'pleas enter the password'] ,
+        required : true 
         //validate : [isPassword , 'pleas enter a valid password']
     }
     
