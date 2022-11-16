@@ -15,6 +15,7 @@ var usersRouter = require('./routes/users');
 var carRouter = require('./routes/car');
 var ClintRouter = require('./routes/clint');
 var CentersRouter = require('./routes/center');
+var CompanyRouter = require('./routes/company');
 
 
 
@@ -135,6 +136,7 @@ app.use('/users', usersRouter);
 app.use('/mangecar',carRouter);
 app.use('/mangeclint' , ClintRouter);
 app.use('/mangecenter' ,CentersRouter);
+app.use('/mangecompany',CompanyRouter);
 
 
 
