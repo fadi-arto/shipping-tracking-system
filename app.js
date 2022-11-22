@@ -50,14 +50,11 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')())
+app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(session({
-  secret : 'shipping-jp',
-  saveUninitialized : true,
-  /// for creat new session between server and client 
-  resave : true,
-  }));
+app.use(require('express-session')({ secret: 'shipping-jp', resave: true, saveUninitialized: true }));/// for creat new session between server and client
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
