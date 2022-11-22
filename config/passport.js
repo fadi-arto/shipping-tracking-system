@@ -8,8 +8,8 @@ const clients = require('../model/clients');
 
 
 passport.use('local-signin', new localStrategy({
-    usernameField  : 'email',
-    passwordField : 'password',
+    usernameField  : 'Email',
+    passwordField : 'Password',
     passReqToCallback :true,
     
     } , (req , email , password , done)=>{
