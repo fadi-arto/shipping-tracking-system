@@ -11,13 +11,13 @@ const ClientSchema = new mongoose.Schema({
         required : [true , 'pleas enter the name'] , 
 
     },
-    Email : {
+    email : {
         type : String, 
         
         validate : [isEmail,'pleas enter the true email'],
         required : [true , 'pleas enter the email'],
     },
-    Password : {
+    password : {
         type : String ,
         required : true ,
         minlenghth : [6 , 'minumum password is 6 characters'],
@@ -41,12 +41,12 @@ const ClientSchema = new mongoose.Schema({
 
 
 
-ClientSchema.methods.hashPassword = function(Password){
-    return bcrypt.hashSync(Password,bcrypt.genSaltSync(),null);
+ClientSchema.methods.hashPassword = function(password){
+    return bcrypt.hashSync(password,bcrypt.genSaltSync(),null);
 }
 
 ClientSchema.methods.comparePassword = function(Passsword){
-    return bcrypt.compareSync(Password , this.Passsword)
+    return bcrypt.compareSync(password , this.passsword)
 }
 
 
