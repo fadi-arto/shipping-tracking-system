@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret : 'shipping-jp',
-  saveUninitialized : false,
+  saveUninitialized : true,
   /// for creat new session between server and client 
   resave : true,
   }));

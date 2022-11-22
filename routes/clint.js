@@ -13,16 +13,16 @@ router.put('/update/:id', Updateclint);
 
 
 
+router.post('/login', passport.authenticate('local', {  successRedirect: '/login' ,failureRedirect: '/' , failureFlash: true }),
+
+   );
+  router.get('/nazer',(req,res,next)=>{
+    console.log(req.isAuthenticated());
+  })
 
 
 
 
-
-router.post('/login', passport.authenticate('local-signin', {
-     successRedirect: '/',
-    failureRedirect: '/',
-     failureFlash: true,
-  }))
 
 
 

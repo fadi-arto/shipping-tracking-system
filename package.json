@@ -21,6 +21,7 @@
     "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "password-hash": "^1.2.2",
     "session": "^0.1.0",
     "validator": "^13.7.0"
   }
