@@ -52,12 +52,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(session({
-//   secret : 'shipping-jp',
-//   saveUninitialized :  true,
-//   /// for creat new session between server and client 
-//   resave : true,
-//   }));
+app.use(session({
+  secret : 'shipping-jp',
+  saveUninitialized : false,
+  /// for creat new session between server and client 
+  resave : true,
+  }));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());

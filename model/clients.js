@@ -41,13 +41,13 @@ const ClientSchema = new mongoose.Schema({
 
 
 
-ClientSchema.methods.hashPassword = function(password){
-    return bcrypt.hashSync(password,bcrypt.genSaltSync(),null);
-}
+// ClientSchema.methods.hashPassword = function(password){
+//     return bcrypt.hashSync(password,bcrypt.genSaltSync(),null);
+// }
 
-ClientSchema.methods.comparePassword = function(Passsword){
-    return bcrypt.compareSync(password , this.passsword)
-}
+// ClientSchema.methods.comparePassword = function(password){
+//     return bcrypt.compareSync(password , this.passsword)
+// }
 
 
 
