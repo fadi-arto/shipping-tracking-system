@@ -24,8 +24,6 @@ Status : {
     type : String , 
     required : true 
 }
-
-
 },{timestamps : true});
 
 

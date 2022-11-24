@@ -1,9 +1,9 @@
 const { model } = require('mongoose');
-const company = require('../../model/company');
+const company = require('../../Entity/company');
 
 
 
-const deletcompanybyid = (id , result) =>{
+const deletecompanybyid = (id , result) =>{
 company.findByIdAndDelete(id , function(err, results){
 if(err){
     console.log(err);
@@ -17,4 +17,4 @@ else{
 
 }
 
-module.exports = { deletcompanybyid };
+module.exports = { deletecompanybyid };

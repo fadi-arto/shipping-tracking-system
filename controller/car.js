@@ -1,6 +1,6 @@
 const { addcar } = require('../Models/Car/addcar');
 const { deletecarById } = require('../Models/Car/deletcar')
-const car = require('../model/cars');
+const car = require('../Entity/cars');
 const {UpdatecarById} = require('../Models/Car/updatecar');
 
 

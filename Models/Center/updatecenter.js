@@ -1,5 +1,5 @@
 const { model } = require('mongoose')
-const center= require('../../model/centers')
+const center= require('../../Entity/centers')
 
 
 

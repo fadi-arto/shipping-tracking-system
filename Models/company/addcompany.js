@@ -1,20 +1,29 @@
 const async = require('hbs/lib/async');
 const {model}  = require('mongoose') ; 
-const company = require('../../model/company');
+const company = require('../../Entity/company');
 
 //add data to mongoose
 
 const  addcompany = async (data , result) =>{
-    company.create(data,(err , results)=>{
-    if(err){
-   console.log(err)
-   result(err, null)
+company.findOne({email: data.email}).then(companys=>{
+    if(companys){
+        result("email is already in the company",null)
     }
     else{
-        result(null,results)
+        company.create({name : data.name , email: data.email , password : new company().hashPassword(data.password) },(err , results)=>{
+            if(err){
+           console.log(err)
+           result(err, null)
+            }
+            else{
+                result(null,results)
+            }
+        
+         })
     }
+})
 
- })
+
 }
 
 module.exports = { addcompany } ;

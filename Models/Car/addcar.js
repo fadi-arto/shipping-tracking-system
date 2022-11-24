@@ -1,6 +1,6 @@
 const async = require('hbs/lib/async');
 const {model}  = require('mongoose') ; 
-const car = require('../../model/cars');
+const car = require('../../Entity/cars');
 
 //add data to mongoose
 

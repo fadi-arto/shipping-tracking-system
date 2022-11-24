@@ -1,6 +1,6 @@
-const company = require('../model/company');
+const company = require('../Entity/company');
 const { addcompany } = require('../Models/company/addcompany');
-const { deletcompanybyid } =require('../Models/company/deletcompany');
+const { deletecompanybyid } =require('../Models/company/deletecompany');
 const { UpdatecompanyById } = require('../Models/company/update');
 
 
@@ -20,9 +20,9 @@ const createcompany = (req,res) => {
 }
 
 
-const deletcompany = (req,res)=>{
+const deletecompany = (req,res)=>{
     const id = req.params.id;
-    deletcompanybyid(id, (err,result)=>{
+    deletecompanybyid(id, (err,result)=>{
    if(err){
        res.send(err);
    }
@@ -54,4 +54,4 @@ const deletcompany = (req,res)=>{
 
 
 
-module.exports = { createcompany  , deletcompany , Updatecompany} ; 
+module.exports = { createcompany  , deletecompany , Updatecompany} ; 

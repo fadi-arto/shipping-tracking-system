@@ -1,5 +1,5 @@
 const { model } = require('mongoose')
-const company = require('../../model/company')
+const company = require('../../Entity/company')
 
 
 

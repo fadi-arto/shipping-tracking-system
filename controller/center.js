@@ -1,5 +1,5 @@
 const { addcenter } = require('../Models/Center/addcenter');
-const center = require('../model/centers');
+const center = require('../Entity/centers');
 const  {deletecenterById} = require('../Models/Center/deletcenter');
 const { UpdatecenterById } = require('../Models/Center/updatecenter');
 
