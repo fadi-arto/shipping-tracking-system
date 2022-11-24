@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-const {sign_Company} = require('../auth/auth')
+const {sign_Company , sign_client} = require('../auth/auth')
 
 /* GET home page. */
 router.get('/auth', function(req, res, next) {
@@ -22,6 +22,13 @@ router.get('/',function(req, res, next) {
 router.get('/a',sign_Company,function(req, res, next) {
 res.send("a")
 });
+
+
+
+router.get('/isclient',sign_client,function(req, res, next) {
+  res.send("client")
+  });
+
 
 
 router.post('/login', passport.authenticate('local-signin', {

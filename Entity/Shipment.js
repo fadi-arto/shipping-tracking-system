@@ -55,6 +55,16 @@ const ShipmentSchema = new mongoose.Schema({
     cost:{
         type:Number
     },
+     Evaloation : {
+    type:Number,
+    },
+    priority : {
+    type: String,
+    required : true 
+    },
+    state : {
+     type : String , 
+    },
 
 },{ timestamps : true});
 
