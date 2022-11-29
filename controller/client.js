@@ -70,4 +70,72 @@ const AddShipment = (req, res) => {
 
 
 
-module.exports = {newclient , deleteclient ,Updateclient , AddShipment };
+const show_complaint_byname = (req,res)=>{
+    try{
+  
+    let nameofcomlaint = req.body.Name;
+    
+    clients.findOne({Name:nameofcomlaint}, function(err,results){
+    if(results){
+    res.send(results.complaint);
+    }
+    else{
+        res.send("dont have ");
+    }
+    })
+    
+    
+    }
+    catch(err){
+        res.send("errore");
+    }
+    };
+
+
+
+
+
+    const getallcomplaint = (req,res)=>{
+                  
+    clients.find( {} ,function(err,results){
+        if(results){
+            console.log(results.complaint)
+        res.send(results.complaint);
+        }
+        else{
+            res.send("dont have ");
+        }
+        })
+        
+    
+        
+     
+        };
+
+
+        const show_all_client = (req,res)=>{         
+            clients.find({} ,function(err,results){
+                if(results){
+                    console.log("hereee")
+                    console.log(results)
+                    console.log("hereee")
+                res.send(results);
+                }
+                else{
+                    res.send("dont have ");
+                }
+                })
+                
+            
+                
+             
+                };
+
+
+
+
+
+
+
+
+module.exports = {newclient , deleteclient ,Updateclient , AddShipment,show_complaint_byname , getallcomplaint, show_all_client  };

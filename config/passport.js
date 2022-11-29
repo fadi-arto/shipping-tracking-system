@@ -13,7 +13,8 @@ passport.deserializeUser((id, done) => {
   clients.findById(id, (err, user) => {
     if (user) {
       return done(err, user);
-    } else {
+    }
+     else {
       company.findById(id, (err, users) => {
         if(users){
           return done(err, users);

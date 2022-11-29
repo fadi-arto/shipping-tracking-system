@@ -3,6 +3,7 @@ const { deletecarById } = require('../Models/Car/deletcar')
 const { UpdatecarById } = require('../Models/Car/updatecar');
 const { Updatecar_platById } =require('../Models/Car/updatecar_plate');
 const { Update_state_car_ById } = require('../Models/Car/updatestatus_car')
+const cars = require('../Entity/cars');
 
 
 //give the data from front end to models after that push to mongoose
@@ -81,13 +82,48 @@ const update_state_car = (req, res) => {
 }
 
 
+// const find_car_by_plate = (req, res) => {
+//     try {
+//         let Car_plate = req.params.Car_plate;
+//         console.log(Car_plate)
+//         cars.findById(Car_plate , function(err , results){
+//             res.send(results.Location)
+//         })
+//     }
+//     catch(err){
+//         res.send("errore");
+
+//     }
+// }
+
+const find_car_by_plate = (req,res)=>{
+try{
+//let id = req.params.id;
+let Carplate = req.body.Car_plate;
+
+cars.findOne({Car_plate:Carplate}, function(err,results){
+if(results){
+    console.log("acas");
+res.send(results.Location);
+}
+else{
+    res.send("this Car_plate not find");
+}
+})
+
+
+}
+catch(err){
+    res.send("errore");
+}
+};
 
 
 
 
 
 
-module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car};
+module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate};
 
 
 

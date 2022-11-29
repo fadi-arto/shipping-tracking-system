@@ -1,5 +1,7 @@
 const clients = require("../Entity/clients");
 const Shipment = require("../Entity/Shipment");
+const {UpdateshipmentById} =require('../Models/Client/updateshipment')
+const {deleteshipment} = require('../Models/Client/deleteshipment');
 
 const getShipment = (req, res) => {
   try {
@@ -20,4 +22,39 @@ const getShipment = (req, res) => {
   }
 };
 
-module.exports = { getShipment };
+
+
+const Updateshipment_state = (req, res) => {
+  const data  = req.body;
+  const id    = req.params.id;
+  UpdateshipmentById(data ,id, (err, results) => {
+      if (err){
+          res.send(err);
+      }else{
+          res.send(results);
+      }
+  });
+
+}
+
+
+
+
+const deletesshipment_by_id = (req,res)=>{
+  const id = req.params.id;
+  deleteshipment(id, (err,result)=>{
+ if(err){
+     res.send(err);
+ }
+ else{
+     res.send(result);
+ }
+ 
+ })    
+ 
+ }
+ 
+
+
+
+module.exports = { getShipment , Updateshipment_state , deletesshipment_by_id};

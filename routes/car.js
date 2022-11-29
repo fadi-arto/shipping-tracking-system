@@ -5,8 +5,8 @@ var router  = express.Router();
 
 
 router.post('/' ,creatcar );
-router.delete('/nazer/:id' , deletecar);
-router.put('/nazer/:id', Updatecaree);
+router.delete('/deletcar/:id' , deletecar);
+router.put('/updatecar/:id', Updatecaree);
 
 
 
