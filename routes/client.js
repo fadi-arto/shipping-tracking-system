@@ -1,10 +1,7 @@
 const express = require("express");
 const { newclient, deleteclient, Updateclient ,AddShipment } = require("../controller/client");
-<<<<<<< Updated upstream
 const {getShipment,Updateshipment_state,deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,get_Quantity_by_carplate_for_shipment,Update_shipment_cost ,Update_shipment_service} =require("../controller/Shipment")
-=======
-const {getShipment,Updateshipment_state,deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,get_Quantity_by_carplate_for_shipment } =require("../controller/Shipment")
->>>>>>> Stashed changes
+
 var router = express.Router();
 
 

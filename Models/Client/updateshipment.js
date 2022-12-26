@@ -56,7 +56,6 @@ const Updateshipment_priority_ById = (data, id, result) => {
 //   );
 // };
 
-<<<<<<< Updated upstream
 const Updateshipment_cost_ById = (data, id, result) => {
   console.log(data);
   Shipment.findByIdAndUpdate(
@@ -91,9 +90,6 @@ const Updateshipment_service_ById = (data, id, result) => {
     }
   );
 };
-=======
-
->>>>>>> Stashed changes
 
 
 
@@ -104,8 +100,4 @@ const Updateshipment_service_ById = (data, id, result) => {
 
 
 
-<<<<<<< Updated upstream
 module.exports = { UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById};
-=======
-module.exports = { UpdateshipmentById , Updateshipment_priority_ById};
->>>>>>> Stashed changes
