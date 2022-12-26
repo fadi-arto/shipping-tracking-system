@@ -8,7 +8,6 @@ Car_plate :{
 },
 Location : {
    type : String ,
-   required : true
 },
 Quantity : {
    type : Number ,
@@ -20,9 +19,13 @@ Type :{
   required : true 
 
 },
+Email:{
+   type : String ,
+   required : true 
+ 
+ },
 Status : {
     type : String , 
-    required : true 
 }
 },{timestamps : true});
 

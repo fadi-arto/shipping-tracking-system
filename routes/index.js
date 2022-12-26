@@ -30,7 +30,6 @@ router.get('/isclient',sign_client,function(req, res, next) {
   });
 
 
-
 router.post('/login', passport.authenticate('local-signin', {
   successRedirect: '/auth',
   failureRedirect: '/Failure',

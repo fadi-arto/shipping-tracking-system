@@ -27,15 +27,21 @@ var ClintRouter = require('./routes/client');
 var CentersRouter = require('./routes/center');
 var CompanyRouter = require('./routes/company');
 const mangadmin = require('./routes/admin');
+const cors = require('cors');
 
 
 var app = express();
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+  });
 
 const dbURI = 'mongodb+srv://tarcking:12345@nudetuts.vtv2cor.mongodb.net/note-tuts?retryWrites=true&w=majority' ;  
 mongoose.connect(dbURI , {useNewUrlParser : true , useUnifiedTopology : true})
   .then((result)=>{
     console.log("connection");
-    app.listen(8002)
   })
   .catch((err)=> console.log(err));
 
@@ -54,6 +60,11 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
+var corsOptions = {
+  credentials: true,
+  origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:8080']
+}
+app.use(cors(corsOptions));
 app.use(require('serve-static')(__dirname + '/../../public'));
 app.use(require('cookie-parser')())
 app.use(require('body-parser').urlencoded({ extended: true }));
@@ -72,7 +83,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/mangecar',carRouter);
+app.use('/managecar',carRouter);
 app.use('/mangeclint' , ClintRouter);
 app.use('/mangecenter' ,CentersRouter);
 app.use('/mangecompany',CompanyRouter);

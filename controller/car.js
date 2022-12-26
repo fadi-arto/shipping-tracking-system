@@ -25,6 +25,7 @@ const creatcar = (req, res) => {
 
 const deletecar = (req,res)=>{
     const id = req.params.id;
+    console.log(id);
     deletecarById(id ,(err,results)=>{
         if(err){
             res.send(err)
@@ -82,19 +83,30 @@ const update_state_car = (req, res) => {
 }
 
 
-// const find_car_by_plate = (req, res) => {
-//     try {
-//         let Car_plate = req.params.Car_plate;
-//         console.log(Car_plate)
-//         cars.findById(Car_plate , function(err , results){
-//             res.send(results.Location)
-//         })
-//     }
-//     catch(err){
-//         res.send("errore");
+const findAll = (req, res) => {
+    try {
+        cars.find(  function(err , results){
+            res.send(results)
+        })
+    }
+    catch(err){
+        res.send("errore");
 
-//     }
-// }
+    }
+}
+
+
+const findAlllocation = (req, res) => {
+    try {
+        cars.find(function(err , results){
+            res.send(results.location)
+        })
+    }
+    catch(err){
+        res.send("errore");
+
+    }
+}
 
 const find_car_by_plate = (req,res)=>{
 try{
@@ -123,7 +135,7 @@ catch(err){
 
 
 
-module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate};
+module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate , findAll , findAlllocation};
 
 
 
