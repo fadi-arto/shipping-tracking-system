@@ -122,7 +122,7 @@ const show_complaint_byname = (req,res)=>{
                 res.send(results);
                 }
                 else{
-                    res.send("dont have ");
+                    res.send("dont have any clilent ");
                 }
                 })
                 
