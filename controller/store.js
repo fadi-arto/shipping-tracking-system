@@ -1,5 +1,6 @@
 const { model } = require('mongoose');
 const { addstore } = require('../Models/company/addstore');
+const { deletstorebyid } = require('../Models/company/deletestore');
 const cars = require('../Entity/cars');
 
 
@@ -33,4 +34,26 @@ const find_location_carBy_id = (req, res) => {
 }
 
 
-module.exports = { createstore , find_location_carBy_id }
+const deletestory = (req,res)=>{
+    const id = req.params.id;
+    deletstorebyid(id, (err,result)=>{
+   if(err){
+       res.send(err);
+   }
+   else{
+       res.send(result);
+   }
+   
+   })    
+   
+   }
+
+
+   
+
+
+
+
+
+
+module.exports = { createstore , find_location_carBy_id,deletestory }

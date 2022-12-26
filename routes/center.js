@@ -8,7 +8,7 @@ var router  = express.Router();
 router.post('/' ,creatcenter );
 router.delete('/deletcenter/:id' ,deletcenter );
 router.put('/updatecenter/:id' , Updatecenter) ;
-router.post('/addshipment' ,AddShipment );
+router.post('/' ,AddShipment );
 
 
 

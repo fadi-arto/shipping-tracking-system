@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const {isEmail, minlenght} = require('validator');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const QRCode = require('qrcode');
+const { text } = require('express');
 
 const ShipmentSchema = new mongoose.Schema({
  
@@ -65,8 +67,26 @@ const ShipmentSchema = new mongoose.Schema({
     state : {
      type : String , 
     },
+    Location:{
+        type : String
+    }   
 
 },{ timestamps : true});
+
+
+
+
+
+// ShipmentSchema.methods.generate_QR = function () {
+
+//     console.log("id")
+//     let QR = {
+//         "id" : id , 
+//         }  
+//     let stjson = JSON.stringify(QR);
+//     QRCode.toDataURL(stjson,function(err,code){ return code ; })
+//   };
+
 
 const Shipment = mongoose.model('Shipment' , ShipmentSchema);
 module.exports = Shipment ;

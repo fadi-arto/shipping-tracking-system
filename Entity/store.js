@@ -5,9 +5,15 @@ const Schema = mongoose.Schema();
 
 const Storeschema =  mongoose.Schema({
 
-Store : {
-    shipment : Array , 
-   // required: true 
+shipment : {
+      type : Array ,      
+},
+capicity :{
+      type : String,
+
+},
+Location : {
+    type : String
 }
 
 
