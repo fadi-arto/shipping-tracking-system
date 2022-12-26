@@ -98,6 +98,34 @@ console.log(err);
 
 
 
+const get_Quantity_by_carplate_for_shipment = (req,res)=>{
+  let id = req.params.id;
+  Shipment.findById(id , (err,results_shipment)=>{
+  if (err){
+ console.log(err);
+  }
+  else{
+ cars.findOne({Car_plate:results_shipment.Car_plate},(err,result_car)=>{
+ if(result_car){
+   console.log(result_car.Quantity) ;
+    
+ }
+ else{
+ console.log(err);
+ 
+ }
+ res.sendStatus(result_car.Quantity);
+ })
+  }
+  })
+
+  //res.send(result_car.Quantity);
+ }
+
+
+
+
+
 
 
 
@@ -107,4 +135,4 @@ console.log(err);
 
 
 
-module.exports = { getShipment , Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment};
+module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment};
