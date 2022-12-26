@@ -1,11 +1,7 @@
 const clients = require("../Entity/clients");
 const Shipment = require("../Entity/Shipment");
 const cars = require('../Entity/cars');
-<<<<<<< Updated upstream
 const {UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById} =require('../Models/Client/updateshipment')
-=======
-const {UpdateshipmentById , Updateshipment_priority_ById} =require('../Models/Client/updateshipment')
->>>>>>> Stashed changes
 const {deleteshipment} = require('../Models/Client/deleteshipment');
 
 const getShipment = (req, res) => {
@@ -184,8 +180,4 @@ const get_Quantity_by_carplate_for_shipment = (req,res)=>{
 
 
 
-<<<<<<< Updated upstream
 module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service};
-=======
-module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment};
->>>>>>> Stashed changes
