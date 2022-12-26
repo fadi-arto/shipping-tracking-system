@@ -2,6 +2,7 @@ const { model } = require('mongoose');
 const { addstore } = require('../Models/company/addstore');
 const { deletstorebyid } = require('../Models/company/deletestore');
 const cars = require('../Entity/cars');
+const store = require('../Entity/store');
 
 
 
@@ -48,6 +49,52 @@ const deletestory = (req,res)=>{
    
    }
 
+const find_all_story=(req,res)=>{
+    store.find({}, (err , result)=>{
+     if(result){
+        res.send(result)
+     }
+     else{
+        res.send("dont have store")
+     }
+
+    })
+
+}
+
+
+
+
+
+const find_story_by_id=(req,res)=>{
+    const id = req.params.id
+    store.findById(id , (err , result)=>{
+     if(result){
+        res.send(result)
+     }
+     else{
+        res.send("dont have store")
+     }
+
+    })
+
+}
+   
+
+
+const find_story_shipment_by_id=(req,res)=>{
+    const id = req.params.id
+    store.findById(id , (err , result)=>{
+     if(result){
+        res.send(result.shipment)
+     }
+     else{
+        res.send("dont have shipment")
+     }
+
+    })
+
+}
 
    
 
@@ -56,4 +103,4 @@ const deletestory = (req,res)=>{
 
 
 
-module.exports = { createstore , find_location_carBy_id,deletestory }
+module.exports = { createstore , find_location_carBy_id,deletestory, find_all_story,find_story_by_id,find_story_shipment_by_id}
