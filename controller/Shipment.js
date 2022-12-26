@@ -1,7 +1,7 @@
 const clients = require("../Entity/clients");
 const Shipment = require("../Entity/Shipment");
 const cars = require('../Entity/cars');
-const {UpdateshipmentById , Updateshipment_priority_ById} =require('../Models/Client/updateshipment')
+const {UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById} =require('../Models/Client/updateshipment')
 const {deleteshipment} = require('../Models/Client/deleteshipment');
 
 const getShipment = (req, res) => {
@@ -13,7 +13,7 @@ const getShipment = (req, res) => {
         if (!result) {
           res.send("Don`t have shipment")
         } else {
-
+                          
           res.send(result);
         }
       });
@@ -37,6 +37,51 @@ const Updateshipment_state = (req, res) => {
   });
 
 }
+
+
+const Update_shipment_cost = (req, res) => {
+  const data  = req.body;
+  const id    = req.params.id;
+  Updateshipment_cost_ById(data ,id, (err, results) => {
+      if (err){
+          res.send(err);
+      }else{
+          res.send(results);
+      }
+  });
+
+}
+
+
+
+
+
+
+
+const Update_shipment_service = (req, res) => {
+  const data  = req.body;
+  const id    = req.params.id;
+  Updateshipment_service_ById(data ,id, (err, results) => {
+      if (err){
+          res.send(err);
+      }else{
+          res.send(results);
+      }
+  });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,4 +180,4 @@ const get_Quantity_by_carplate_for_shipment = (req,res)=>{
 
 
 
-module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment};
+module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service};
