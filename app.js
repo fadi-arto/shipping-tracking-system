@@ -10,8 +10,8 @@ const passport = require('passport');
 const session  = require('express-session');
 const flash = require('connect-flash');
 const localStrategy = require('passport-local').Strategy;
-
-
+const cors = require('cors');
+const bodyParser = require("body-parser");
 
 
 
@@ -23,20 +23,19 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carRouter = require('./routes/car');
-var ClintRouter = require('./routes/client');
+var ClintRouter = require('./routes/clients');
 var CentersRouter = require('./routes/center');
 var CompanyRouter = require('./routes/company');
 const mangadmin = require('./routes/admin');
-const cors = require('cors');
 
 
 var app = express();
-
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
   });
+
 
 const dbURI = 'mongodb+srv://tarcking:12345@nudetuts.vtv2cor.mongodb.net/note-tuts?retryWrites=true&w=majority' ;  
 mongoose.connect(dbURI , {useNewUrlParser : true , useUnifiedTopology : true})
