@@ -3,6 +3,7 @@ const Shipment = require("../Entity/Shipment");
 const cars = require('../Entity/cars');
 const {UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById,Updateshipment_Evaloation_ById,Updateshipment_Location_ById,Updateshipment_Late_shipment_ById} =require('../Models/Client/updateshipment')
 const {deleteshipment} = require('../Models/Client/deleteshipment');
+const { show_complaint_byname } = require("./client");
 
 const getShipment = (req, res) => {
   try {
@@ -203,8 +204,40 @@ const get_Quantity_by_carplate_for_shipment = (req,res)=>{
   //res.send(result_car.Quantity);
  }
 
+const get_shippment_done = (req,res)=>{
+
+Shipment.find({state:"done"}, (err,result)=>{
+if(result){
+console.log("asc")
+res.send(result);
+}
+else{
+ // res.send("dont have shipment done")
+ console.log("dont have shippment")
+}
+
+})
 
 
+
+
+}
+
+
+const get_shippment_by_id = (req,res)=>{
+let id = req.params.id
+Shipment.findById(id , (err,result)=>{
+if(result){
+res.send(result)
+
+}
+else{
+  res.send("dont have this shipment")
+}
+
+})
+
+}
 
 
 
@@ -216,4 +249,4 @@ const get_Quantity_by_carplate_for_shipment = (req,res)=>{
 
 
 
-module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service,Update_shipment_Evaloation,Update_shipment_LOcation,Update_shipment_Lateshipment};
+module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service,Update_shipment_Evaloation,Update_shipment_LOcation,Update_shipment_Lateshipment,get_shippment_done,get_shippment_by_id};
