@@ -94,10 +94,70 @@ const Updateshipment_service_ById = (data, id, result) => {
 
 
 
+const Updateshipment_Evaloation_ById = (data, id, result) => {
+  console.log(data);
+  Shipment.findByIdAndUpdate(
+    id,
+    { Evaloation: data.Evaloation},
+    { new: true },
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
+
+
+
+
+
+const Updateshipment_Location_ById = (data, id, result) => {
+  console.log(data);
+  Shipment.findByIdAndUpdate(
+    id,
+    { Location: data.Location},
+    { new: true },
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
+
+
+
+
+const Updateshipment_Late_shipment_ById = (data, id, result) => {
+  console.log(data);
+  Shipment.findByIdAndUpdate(
+    id,
+    { LateShipment: data.LateShipment},
+    { new: true },
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        result(err, null);
+      } else {
+        result(null, results);
+      }
+    }
+  );
+};
 
 
 
 
 
 
-module.exports = { UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById};
+
+
+
+module.exports = { UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById,Updateshipment_Evaloation_ById,Updateshipment_Location_ById,Updateshipment_Late_shipment_ById};
