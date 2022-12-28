@@ -69,6 +69,10 @@ const ShipmentSchema = new mongoose.Schema({
     },
     Location:{
         type : String
+    },
+    center : {
+   type  :String
+
     }   
 
 },{ timestamps : true});

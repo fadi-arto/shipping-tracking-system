@@ -4,13 +4,16 @@ const { UpdatecarById } = require('../Models/Car/updatecar');
 const { Updatecar_platById } =require('../Models/Car/updatecar_plate');
 const { Update_state_car_ById } = require('../Models/Car/updatestatus_car')
 const cars = require('../Entity/cars');
+const { request } = require('express');
+const company = require('../Entity/company');
 
 
 //give the data from front end to models after that push to mongoose
 
 const creatcar = (req, res) => {
     const data = req.body;
-    addcar(data,(err, car) => {
+    console.log(req.isAuthenticated());
+    addcar(data,req.session.passport.user,(err, car) => {
         if(err) {
             console.log(err)
             res.send(err)
@@ -20,6 +23,10 @@ const creatcar = (req, res) => {
         }
     })
 }
+
+
+
+
 
 
 
@@ -130,9 +137,42 @@ catch(err){
 
 
 
+const fin_car_same_company = (req,res)=>{
+    let id = req.session.passport.user;
+cars.find({},(err,result_car)=>{
+if(err){
+
+    console.log(err);
+    }
+    else{
+company.findById(id,(err,result_comany)=>{
+if(result_comany.name==result_car.name){
+
+    res.send(result_car);
+}
+else{
+
+    res.send("dont have car here")
+}
 
 
-module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate, findall, findalllocation};
+})
+
+    }
+
+})
+
+}
+
+
+
+
+
+
+
+
+
+module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate, findall, findalllocation,fin_car_same_company};
 
 
 

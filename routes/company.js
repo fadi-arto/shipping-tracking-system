@@ -4,10 +4,14 @@ const {creatcar ,updatecar_plate,update_state_car,find_car_by_plate} = require('
 const {find_location_carBy_id} = require('../controller/store');
 const {show_complaint_byname ,getallcomplaint, show_all_client ,Updateclient} = require('../controller/client');
 const {creatcenter} = require('../controller/center')
-
+var router = express.Router();
+const passport = require('passport');
 
 
 var router = express.Router();
+
+router.post('/create_center' ,creatcenter);
+
 
 
 router.post('/addstory',createstore);
@@ -22,14 +26,34 @@ router.put('/updatestate/:id' , update_state_car );
 router.get('/findcar_plate' , find_car_by_plate);
 router.get('/show_complaint' ,show_complaint_byname);
 router.get('/show_all_complaint',getallcomplaint );
-router.post('/createcenter',creatcenter);
 router.get('/showall_client' , show_all_client);
 router.put('/update_claient/:id' , Updateclient );
 
 
 
-
+router.get('/auth', function(req, res, next) {
+    req.session.customer = "company"
+    console.log(req.isAuthenticated());
+    console.log(req.session.passport.user);
+    console.log("2");
+     res.send("Signed in company");
+   });
+   
+   router.get('/Failure', function(req, res, next) {
+     res.send("Error Signed in")
+   });
+   router.post('/login_company', passport.authenticate('local-company', {
+     successRedirect: '/mangecompany/auth',
+     failureRedirect: '/mangecompany/Failure',
+     failureFlash: true,
+   }))
+   
+   
+   
+   
 
 
 
 module.exports = router;
+
+/* GET home page. */

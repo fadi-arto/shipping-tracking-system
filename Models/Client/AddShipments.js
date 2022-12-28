@@ -3,35 +3,48 @@ const Shipment = require('../../Entity/Shipment');
 const clients = require('../../Entity/clients');
 const QRCode = require('qrcode');
 const crypto = require("crypto")
+const center = require('../../Entity/centers')
 
 //add data to mongoose
 
-const  AddShipments = async (data , result) =>{
-    // console.log(data)
-        
-    Shipment.create({SourceLocation:data.SourceLocation ,DistinationLocation:data.DistinationLocation, Services:data.Services , Type_Of:data.Type_Of , EmailSource:data.EmailSource , EmailDistination:data.EmailDistination  , priority:data.priority  },(err , results)=>{
-    if(err){        
-   console.log(err)
-   result(err, null)
-    }
-    else{
-        console.log(results.id)
-    //        let QR = {
-    //     "id" : results.id , 
-    //     }  
-    // let stjson = JSON.stringify(QR);
-    // QRCode.toDataURL(stjson,function(err,code){ 
-    //     console.log(code)
-    //     results.Qr =  code ;
-    //     console.log(results.Qr)
-    //  })
-    //  results.save()
-     console.log("results")
-        result(null,results)
+const  AddShipments = async (data, center_id , result) =>{
+    Shipment.find({},(err , results)=>{
+        if(err){
+       console.log(err)
+     
+        }
+        else{
+            center.findById(center_id,(err,center_result)=>{
+                if(company_result){
+                    Shipment.create({center:center_result.id,SourceLocation:data.SourceLocation,DistinationLocation:data.DistinationLocation,Car_plate:data.Car_plate,Services:data.Services,Type_Of:data.Type_Of,Weight:data.Weight,EmailSource:data.EmailSource,EmailDistination:data.EmailDistination,DateEnd:data.DateEnd,LateShipment:data.LateShipment,ExceptionTime:data.ExceptionTime,cost:data.cost,Evaloation:data.Evaloation,priority:data.priority,state:data.state,Location:data.Location},(err,result)=>{
+                        if(err){
+                            console.log(err)
+                             result(err, null)
+                             }
+                         else{
+                             result(null,results)
+                          }
+                                                
     
-    }
-
- })
+                    })
+                }
+            })
+        }
+    
+     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {AddShipments} ;

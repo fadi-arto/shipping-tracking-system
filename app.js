@@ -15,6 +15,7 @@ const bodyParser = require("body-parser");
 
 
 
+mongoose.set('strictQuery', false);
 
 
 var path = require('path');
@@ -49,6 +50,8 @@ mongoose.connect(dbURI , {useNewUrlParser : true , useUnifiedTopology : true})
   
 
 require('./config/passport');
+require('./config/passport_centers');
+require('./config/passport_company');
 
 
 

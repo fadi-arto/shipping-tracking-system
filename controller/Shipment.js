@@ -1,4 +1,5 @@
 const clients = require("../Entity/clients");
+const center = require('../Entity/centers');
 const Shipment = require("../Entity/Shipment");
 const cars = require('../Entity/cars');
 const {UpdateshipmentById , Updateshipment_priority_ById,Updateshipment_cost_ById,Updateshipment_service_ById,Updateshipment_Evaloation_ById,Updateshipment_Location_ById,Updateshipment_Late_shipment_ById} =require('../Models/Client/updateshipment')
@@ -241,7 +242,29 @@ else{
 
 
 
+const fin_shipment_same_center = (req,res)=>{
+  let id = req.session.passport.user;
+Shipment.find({},(err,result_shippment)=>{
+if(err){
 
+  console.log(err);
+  }
+  else{
+center.findById(id,(err,result_center)=>{
+if(result_center.id==result_shippment.center){
+
+  res.send(result_shippment);
+}
+else{
+
+  res.send("dont have shippment on this center")
+}
+})
+}
+
+})
+
+}
 
 
 
@@ -249,4 +272,4 @@ else{
 
 
 
-module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service,Update_shipment_Evaloation,Update_shipment_LOcation,Update_shipment_Lateshipment,get_shippment_done,get_shippment_by_id};
+module.exports = { getShipment , get_Quantity_by_carplate_for_shipment,Updateshipment_state , deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,Update_shipment_cost,Update_shipment_service,Update_shipment_Evaloation,Update_shipment_LOcation,Update_shipment_Lateshipment,get_shippment_done,get_shippment_by_id,fin_shipment_same_center};

@@ -24,6 +24,9 @@ Type :{
 },
 Status : {
     type : String , 
+},
+company:{
+   type : String
 }
 },{timestamps : true});
 
