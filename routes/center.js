@@ -14,6 +14,7 @@ router.post('/Add shipment' ,AddShipment );
 router.get('/findAllcenters', findAllCenters);
 
 router.get('/auth', function(req, res, next) {
+    console.log(req.isAuthenticated());
      res.send("Signed in Centers");
    });
    
