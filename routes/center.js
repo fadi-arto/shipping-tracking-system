@@ -21,7 +21,7 @@ router.get('/auth', function(req, res, next) {
      res.send("Error Signed in")
    });
    router.post('/login_centers', passport.authenticate('local-centers', {
-     successRedirect: '/auth',
+     successRedirect: '/mangecenter/auth',
      failureRedirect: '/mangecenter/Failure',
      failureFlash: true,
    }))
