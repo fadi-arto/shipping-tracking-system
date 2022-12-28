@@ -16,19 +16,11 @@ const CompanySchema = new mongoose.Schema({
     validate : [isEmail,'pleas enter the true email'],
 
     },
-    
     password : {
         type : String ,
         required : true ,
         minlenghth : [6 , 'minumum password is 6 characters'],
-    } ,
-    center : {
-    type : Array ,
-    },
-    Car : {
-        type : Array ,
-    }
-
+    }  
     
 },{ timestamps : true});
 

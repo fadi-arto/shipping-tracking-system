@@ -6,6 +6,9 @@ const {sign_Company , sign_client} = require('../auth/auth')
 /* GET home page. */
 router.get('/auth', function(req, res, next) {
  req.session.customer = "client"
+ console.log(req.isAuthenticated());
+ console.log(req.session.passport.user);
+ console.log("1");
   res.send("Signed in client");
 });
 
