@@ -55,7 +55,8 @@ const Updateclient = (req, res) => {
 
 const AddShipment = (req, res) => {
     const data = req.body;
-    AddShipments(data,(err, result) => {
+    const center_id = req.session.passport.user
+    AddShipments(data,center_id,(err, result) => {
         if(err) {
             console.log(err)
             res.send(err)

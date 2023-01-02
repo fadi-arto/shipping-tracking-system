@@ -7,32 +7,20 @@ const center = require('../../Entity/centers')
 
 //add data to mongoose
 
-const  AddShipments = async (data, center_id , result) =>{
-    Shipment.find({},(err , results)=>{
-        if(err){
-       console.log(err)
-     
-        }
-        else{
-            center.findById(center_id,(err,center_result)=>{
-                if(company_result){
-                    Shipment.create({center:center_result.id,SourceLocation:data.SourceLocation,DistinationLocation:data.DistinationLocation,Car_plate:data.Car_plate,Services:data.Services,Type_Of:data.Type_Of,Weight:data.Weight,EmailSource:data.EmailSource,EmailDistination:data.EmailDistination,DateEnd:data.DateEnd,LateShipment:data.LateShipment,ExceptionTime:data.ExceptionTime,cost:data.cost,Evaloation:data.Evaloation,priority:data.priority,state:data.state,Location:data.Location},(err,result)=>{
+const  AddShipments = async (data, center_id , results) =>{
+    
+                    Shipment.create({center:center_id,SourceLocation:data.SourceLocation,DistinationLocation:data.DistinationLocation,Services:data.Services,Type_Of:data.Type_Of,Weight:data.Weight,EmailSource:data.EmailSource,EmailDistination:data.EmailDistination,priority:data.priority,state:"WAIT"},(err,result)=>{
                         if(err){
                             console.log(err)
-                             result(err, null)
+                             results(err, null)
                              }
                          else{
-                             result(null,results)
+                             results(null,result)
                           }
                                                 
     
                     })
                 }
-            })
-        }
-    
-     })
-}
 
 
 
