@@ -2,7 +2,11 @@ const clients = require("../Entity/clients");
 const center = require('../Entity/centers');
 const Shipment = require("../Entity/Shipment");
 const cars = require('../Entity/cars');
+<<<<<<< HEAD
 const { UpdateshipmentById, Updateshipment_priority_ById, Updateshipment_cost_ById, Updateshipment_service_ById, Updateshipment_Evaloation_ById, Updateshipment_Location_ById, Updateshipment_Late_shipment_ById ,Updateshipment_cost_rate_ById} = require('../Models/Client/updateshipment')
+=======
+const { UpdateshipmentById, Updateshipment_priority_ById, Updateshipment_cost_ById, Updateshipment_service_ById, Updateshipment_Evaloation_ById, Updateshipment_Location_ById, Updateshipment_Late_shipment_ById } = require('../Models/Client/updateshipment')
+>>>>>>> 706a169d629e6e7a2a793886d0fb03d7a0fce505
 const { deleteshipment } = require('../Models/Client/deleteshipment');
 const { show_complaint_byname } = require("./client");
 const company = require('../Entity/company');
@@ -222,6 +226,22 @@ const get_Quantity_by_carplate_for_shipment = (req, res) => {
 }
 
 const get_shippment_done = (req, res) => {
+<<<<<<< HEAD
+=======
+
+  Shipment.find({ state: "done" }, (err, result) => {
+    if (result) {
+      console.log("asc")
+      res.send(result);
+    }
+    else {
+      // res.send("dont have shipment done")
+      console.log("dont have shippment")
+    }
+
+  })
+
+>>>>>>> 706a169d629e6e7a2a793886d0fb03d7a0fce505
 
   Shipment.find({ state: "done" }, (err, result) => {
     if (result) {
@@ -313,6 +333,7 @@ const fin_shipment_company = (req, res) => {
 
 
 
+<<<<<<< HEAD
 
 
 const get_shippment_done_and_wait = (req, res) => {
@@ -336,3 +357,9 @@ const get_shippment_done_and_wait = (req, res) => {
 
 
 module.exports = { getShipment, get_Quantity_by_carplate_for_shipment, Updateshipment_state, deletesshipment_by_id, Updateshipment_priority, get_location_by_carplate_for_shipment, Update_shipment_cost, Update_shipment_service, Update_shipment_Evaloation, Update_shipment_LOcation, Update_shipment_Lateshipment, get_shippment_done, get_shippment_by_id, fin_shipment_same_center,Update_shipmen_discount_rate_cost,get_shippment_done_and_wait };
+=======
+
+
+
+module.exports = { getShipment, get_Quantity_by_carplate_for_shipment, Updateshipment_state, deletesshipment_by_id, Updateshipment_priority, get_location_by_carplate_for_shipment, Update_shipment_cost, Update_shipment_service, Update_shipment_Evaloation, Update_shipment_LOcation, Update_shipment_Lateshipment, get_shippment_done, get_shippment_by_id, fin_shipment_same_center };
+>>>>>>> 706a169d629e6e7a2a793886d0fb03d7a0fce505
