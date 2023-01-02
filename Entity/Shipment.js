@@ -26,7 +26,7 @@ const ShipmentSchema = new mongoose.Schema({
 
     },
     Type_Of :{
-        type : String ,
+        type : Array ,
         required : true  , 
     },
     Weight:{

@@ -1,11 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 const mongoose = require('mongoose');
-const cars = require( './Entity/cars');
-const clients = require('./Entity/clients');
-const company = require('./Entity/company');
-const centers = require('./Entity/centers');
-
 const passport = require('passport');
 const session  = require('express-session');
 const flash = require('connect-flash');
@@ -50,8 +45,6 @@ mongoose.connect(dbURI , {useNewUrlParser : true , useUnifiedTopology : true})
   
 
 require('./config/passport');
-require('./config/passport_centers');
-require('./config/passport_company');
 
 
 

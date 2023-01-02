@@ -34,7 +34,7 @@ router.put('/update_claient/:id' , Updateclient );
 router.get('/auth', function(req, res, next) {
     req.session.customer = "company"
     console.log(req.isAuthenticated());
-    console.log(req.session.passport.user);
+    console.log(req.session);
     console.log("2");
      res.send("Signed in company");
    });
@@ -42,7 +42,7 @@ router.get('/auth', function(req, res, next) {
    router.get('/Failure', function(req, res, next) {
      res.send("Error Signed in")
    });
-   router.post('/login_company', passport.authenticate('local-company', {
+   router.post('/login_company', passport.authenticate('local-signup', {
      successRedirect: '/mangecompany/auth',
      failureRedirect: '/mangecompany/Failure',
      failureFlash: true,
