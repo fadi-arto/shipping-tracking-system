@@ -7,6 +7,7 @@ const cars = require('../Entity/cars');
 const { request } = require('express');
 const company = require('../Entity/company');
 
+const center = require('../Entity/centers');
 
 //give the data from front end to models after that push to mongoose
 
@@ -91,8 +92,22 @@ const update_state_car = (req, res) => {
 
 const findall = (req, res) => {
     try {
+        const id = req.session.passport.user
+        let arr = []
         cars.find(function(err , results){
-            res.send(results)
+            if(results){
+                center.findById(id,(err,results_center)=>{
+                  for (let index = 0; index < results.length; index++) {
+                    if(results[index].company === results_center.Company){
+                        arr.push(results[index].Location)
+                    }
+                  }
+                 console.log(arr);
+                })
+            }
+            else{
+                res.send("not found Car in company")
+              }
         })
     }
     catch(err){
@@ -100,11 +115,22 @@ const findall = (req, res) => {
 
     }
 }
-const findalllocation = (req, res) => {
+const Car_Company = (req, res) => {
     try {
-        cars.find(function(err , results){
-            res.send(results.Location)
+        const id = req.session.passport.user
+        console.log(id);
+        company.findById(id,(err, company) =>{
+            if(company){
+                console.log(company);
+                cars.find({company:company.name},function(err , results){
+                    res.send(results)
+                    })
+            }
+            else{
+                console.log("login error");
+            }
         })
+      
     }
     catch(err){
         res.send("errore");
@@ -172,7 +198,7 @@ else{
 
 
 
-module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate, findall, findalllocation,fin_car_same_company};
+module.exports = { creatcar , deletecar , Updatecaree, updatecar_plate,update_state_car,find_car_by_plate, findall, Car_Company ,fin_car_same_company};
 
 
 

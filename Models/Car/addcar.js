@@ -14,13 +14,13 @@ const  addcar = async (data ,company_id ,result) =>{
     else{
         company.findById(company_id,(err,company_result)=>{
             if(company_result){
-                car.create({company:company_result.name,Car_plate:data.Car_plate,Location:data.Location,Email:data.Email,Quantity:data.Quantity,Type:data.Type,Status:data.Status},(err,result)=>{
+                car.create({company:company_result.name,Car_plate:data.Car_plate,Email:data.Email,Quantity:data.Quantity,Type:data.Type,Status:"Wait"},(err,result_add)=>{
                     if(err){
                         console.log(err)
                          result(err, null)
                          }
                      else{
-                         result(null,results)
+                         result(null,result_add)
                       }
                                             
 
