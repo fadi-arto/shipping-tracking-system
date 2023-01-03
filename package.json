@@ -28,6 +28,8 @@
     "qrcode": "^1.5.1",
     "session": "^0.1.0",
     "side-channel": "^1.0.4",
+    "split": "^1.0.1",
+    "split-string": "^6.1.0",
     "validator": "^13.7.0"
   }
 }
