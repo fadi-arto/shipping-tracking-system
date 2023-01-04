@@ -6,8 +6,6 @@ const { UpdateshipmentById, Updateshipment_priority_ById, Updateshipment_cost_By
 const { deleteshipment } = require('../Models/Client/deleteshipment');
 const { show_complaint_byname } = require("./client");
 const company = require('../Entity/company');
-const split = require('split-string');
-
 
 
 const getShipment = (req, res) => {
@@ -116,6 +114,32 @@ const Update_shipment_LOcation = (req, res) => {
 
 }
 
+const number_of_shippment_in_year=(req,res)=>{
+let data = req.body
+let counter = 0;
+
+
+Shipment.find({} , (err,result_data)=>{
+let datastart;
+let result ;
+
+  if(result_data){
+    for (let index = 0; index < result_data.length; index++){
+datastart= result_data[index].DateStart
+//  counter=counter+datastart;
+// var buf = Buffer.from(datastart);
+// console.log(buf.toString());
+const  data = result_data.DateStart.toString();
+ console.log(data.split("-"));
+    }
+   console.log(datastart)
+  }
+  // const myArray = datastart.split("-");
+
+  //         console.log(myArray);
+})
+
+}
 
 const Update_shipment_Lateshipment = (req, res) => {
   const data = req.body;
@@ -225,6 +249,19 @@ const get_Quantity_by_carplate_for_shipment = (req, res) => {
 
 const get_shippment_done = (req, res) => {
 
+
+  Shipment.find({ state: "done" }, (err, result) => {
+    if (result) {
+      console.log("asc")
+      res.send(result);
+    }
+    else {
+      // res.send("dont have shipment done")
+      console.log("dont have shippment")
+    }
+
+  })
+
   Shipment.find({ state: "done" }, (err, result) => {
     if (result) {
       console.log("asc")
@@ -332,39 +369,4 @@ const get_shippment_done_and_wait = (req, res) => {
 
 }
 
-////////////////////////////////////////////
-///////////////////////////////////////
-////////////////////////////////////////
-const number_of_shippment_in_year=(req,res)=>{
-let data = req.body
-let counter = 0;
-
-
-Shipment.find({} , (err,result_data)=>{
-let datastart;
-let result ;
-
-  if(result_data){
-    for (let index = 0; index < result_data.length; index++){
-datastart= result_data[index].DateStart
-//  counter=counter+datastart;
-// var buf = Buffer.from(datastart);
-// console.log(buf.toString());
-datastart.toString();
- console.log(datastart.split("-"));
-    }
-   console.log(datastart)
-  }
-  // const myArray = datastart.split("-");
-
-  //         console.log(myArray);
-})
-
-}
-
-
-
-
-
-
-module.exports = { getShipment, get_Quantity_by_carplate_for_shipment, Updateshipment_state, deletesshipment_by_id, Updateshipment_priority, get_location_by_carplate_for_shipment, Update_shipment_cost, Update_shipment_service, Update_shipment_Evaloation, Update_shipment_LOcation, Update_shipment_Lateshipment, get_shippment_done, get_shippment_by_id, fin_shipment_same_center,Update_shipmen_discount_rate_cost,get_shippment_done_and_wait,number_of_shippment_in_year };
+module.exports = { getShipment, get_Quantity_by_carplate_for_shipment, Updateshipment_state, deletesshipment_by_id, Updateshipment_priority, get_location_by_carplate_for_shipment, Update_shipment_cost, Update_shipment_service, Update_shipment_Evaloation, Update_shipment_LOcation, Update_shipment_Lateshipment, get_shippment_done, get_shippment_by_id, fin_shipment_same_center,Update_shipmen_discount_rate_cost,get_shippment_done_and_wait };

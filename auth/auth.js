@@ -36,7 +36,13 @@ function Client_isAuthenticated(req,res,next){
       next()
       }
   }
+  function isnotSignin(req ,res, next){
+    if(req.isAuthenticated()){
+        res.send("logout").status(200)
+      return ;
+    }
+    next();
+    }
 
 
-
-module.exports = { sign_Company  , sign_client , Client_isAuthenticated} ;
+module.exports = { sign_Company  , sign_client , Client_isAuthenticated,isnotSignin} ;

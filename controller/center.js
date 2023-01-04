@@ -70,12 +70,12 @@ const fin_cnnter_same_company = (req, res) => {
     try {
     const id = req.session.passport.user
     const arr=[];
-    center.find({}, (err, result_center) => {
+    center.findById(id, (err, result_center) => {
         if (err) {
             console.log(err);
         }
         else {
-           company.findById(id , (err , result_company)=> {
+           company.find({name:result_center.Company},(err , result_company)=> {
             if(err){
                 console.log(err);
             }

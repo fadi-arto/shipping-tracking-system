@@ -2,6 +2,7 @@ const express = require('express');
 const { creatcenter  , deletcenter , Updatecenter , findAllCenters,fin_cnnter_same_company , find_centers_shipment}= require('../controller/center');
 const {fin_shipment_same_center,get_shippment_done_and_wait} = require('../controller/Shipment');
 const {AddShipment} = require('../controller/client');
+const {createplan,find_all_plan_center,find_plan_company} =require('../controller/plan')
 const passport = require('passport');
 
 
@@ -9,6 +10,7 @@ var router  = express.Router();
 
 
 router.post('/create' ,creatcenter );
+router.post('/createplan',createplan );
 router.delete('/deletcenter/:id' ,deletcenter );
 router.put('/updatecenter/:id' , Updatecenter) ;
 router.post('/Add_shipment' ,AddShipment );
@@ -17,8 +19,8 @@ router.get('/find_shippment_wait_done', get_shippment_done_and_wait);
 router.get('/find_shipment_center', fin_shipment_same_center);
 router.get('/find_centers', fin_cnnter_same_company);
 router.get('/find_centers_shipment', find_centers_shipment);
-
-
+router.get('/find_plan_company', find_plan_company);
+router.get('/find_plan_center', find_all_plan_center);
 router.get('/auth', function(req, res, next) {
     req.session.customer = "Center";
     console.log(req.isAuthenticated());
