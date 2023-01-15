@@ -134,7 +134,7 @@ else{
 }
 
 const find_plan_company = (req,res)=>{
-    let id ="63ab0aaadf886247b01f0234";
+    let id =req.session.passport.user;
     company.findById(id , (err,result_company)=>{
     if(err){
     
@@ -148,16 +148,41 @@ const find_plan_company = (req,res)=>{
     }
     else{
         console.log(err)
-    }
-    
+    }    
+    })    
+    }    
     })
-    
-    }
-    
-    })
-
 }
 
 
 
-module.exports={createplan,find_all_plan_center,find_plan_company};
+const add_shipment_to_plane = (req,res)=>{
+let data = req.body;
+let id_plan = req.body
+shipment.findById(data.shipment , (err ,result_shipment)=>{
+if(result_shipment){
+    const c =result_shipment.Car_plate;
+    const s = result_shipment.SourceLocation;
+    const d = result_shipment.DistinationLocation;
+plan.findByIdAndUpdate(
+    data.plan,
+    {$push: {"source_location": s , "distination_location" : d , "CaR" :c} },
+    {safe: true, upsert: true},
+    function(err, model) {
+        if(err){
+        console.log(err);
+        }
+        else{
+            console.log("good")
+        }
+    }
+);
+}
+})
+}
+
+
+
+
+
+module.exports={createplan,find_all_plan_center,find_plan_company,add_shipment_to_plane};
