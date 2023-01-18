@@ -1,6 +1,7 @@
 const express = require("express");
 const { newclient, deleteclient, Updateclient ,AddShipment,table_for_client } = require("../controller/client");
 const {getShipment,Updateshipment_state,deletesshipment_by_id,Updateshipment_priority,get_location_by_carplate_for_shipment,get_Quantity_by_carplate_for_shipment,Update_shipment_cost ,Update_shipment_service,Update_shipment_Evaloation,Update_shipment_LOcation,Update_shipment_Lateshipment,get_shippment_done,get_shippment_by_id,Update_shipmen_discount_rate_cost} =require("../controller/Shipment")
+const passport = require('passport');
 
 var router = express.Router();
 
@@ -24,5 +25,22 @@ router.get('/getlocation_byid/:id', get_location_by_carplate_for_shipment)
 router.get('/getQuantity_byid/:id', get_Quantity_by_carplate_for_shipment);
 router.get('/get_table_for_client', table_for_client);
 router.put("/shipment_cost_rate/:id", Update_shipmen_discount_rate_cost);
-// router.get('/get_Shipment_in_year', number_of_shippment_in_year);
+
+router.get('/auth', function(req, res, next) {
+    req.session.customer = "Client";
+    console.log(req.isAuthenticated());
+    console.log(req.session);
+    console.log("1");
+     res.send("Signed in Client");
+   });
+   
+   router.get('/Failure', function(req, res, next) {
+     res.send("Error Signed in")
+   });
+  
+  router.post('/login', passport.authenticate('client-signin', {
+    successRedirect: '/mangeclint/auth',
+    failureRedirect: '/mangeclint/Failure',
+    failureFlash: true,
+  }))
 module.exports = router;
