@@ -134,9 +134,37 @@ const show_complaint_byname = (req,res)=>{
 
 
 
+const table_for_client = (req,res)=>{
+let id = req.session.passport.user;
+clients.findById(id,(err,result)=>{
+if(err){
+    console.log(err)
+}else{
+    console.log("fadi")
+Shipment.find({},(err,result_shipment)=>{
+ 
+      
+    result_shipment.sort(function(a, b) {
+        return a.DateStart - b.DateStart;
+      });
+      const len = result_shipment.length
+
+      console.log(result_shipment[len-1]);
+      console.log(result_shipment[len-2]);
+      let obj = {
+        x : result_shipment[len-1],
+        y : result_shipment[len-2]
+      }
+      res.send(obj)
+})
+}
+})
+
+}
+
+
+// state,DateStart,ExceptionTime,cost,DistinationLocation
 
 
 
-
-
-module.exports = {newclient , deleteclient ,Updateclient , AddShipment,show_complaint_byname , getallcomplaint, show_all_client  };
+module.exports = {newclient , deleteclient ,Updateclient , AddShipment,show_complaint_byname , getallcomplaint, show_all_client ,table_for_client };

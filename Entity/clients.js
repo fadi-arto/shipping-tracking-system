@@ -20,6 +20,16 @@ const ClientSchema = new mongoose.Schema(
       required: true,
       minlenghth: [6, "minumum password is 6 characters"],
     },
+    phone:{
+      type:Number,
+      required: true
+
+    },
+    gender:{
+       type:String,
+       required:true
+
+    },
   },
   { timestamps: true }
 );

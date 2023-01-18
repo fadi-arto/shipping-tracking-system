@@ -10,7 +10,7 @@ const  addclient = async (data , result) =>{
     clients.findOne({email : data.email},(err,resultss) =>{
         if(!resultss){
             console.log(data);
-            clients.create({Name : data.Name , email: data.email ,password : new clients().hashPassword(data.password)},(err , results )=>{
+            clients.create({Name : data.Name , email: data.email ,password : new clients().hashPassword(data.password),phone:data.phone,gender:data.gender},(err , results )=>{
                 if(err){
                result("Error regisatiration registered", null )
                 }
