@@ -9,7 +9,7 @@ const centers = require('../Entity/centers');
 
 
 const newclient = (req, res) => {
-    const data = req.body;
+    const data = req.body
     const Client = req.session.passport.user
     addclient(data, Client,(err, result) => {
         if (err) {
