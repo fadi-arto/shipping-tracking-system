@@ -5,13 +5,14 @@ const clients = require('../../Entity/clients');
 
 //add data to mongoose
 
-const  addclient = async (data , result) =>{
+const  addclient = async (data, Client , result) =>{
 
     clients.findOne({email : data.email},(err,resultss) =>{
         if(!resultss){
             console.log(data);
-            clients.create({Name : data.Name , email: data.email ,password : new clients().hashPassword(data.password),phone:data.phone,gender:data.gender},(err , results )=>{
+            clients.create({Name : data.Name , email: data.email ,password : new clients().hashPassword(data.password),phone:data.phone , Centers:Client},(err , results )=>{
                 if(err){
+                    console.log(err);
                result("Error regisatiration registered", null )
                 }
                 else{

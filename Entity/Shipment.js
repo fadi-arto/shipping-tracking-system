@@ -34,12 +34,10 @@ const ShipmentSchema = new mongoose.Schema({
     },
     EmailSource:{
         type:String,
-        required : true  , 
 
     },
     EmailDistination:{
         type:String,
-        required : true  , 
     }, 
     DateStart:{
         type:Date,

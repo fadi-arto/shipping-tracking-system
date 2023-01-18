@@ -10,7 +10,8 @@ const centers = require('../Entity/centers');
 
 const newclient = (req, res) => {
     const data = req.body;
-    addclient(data, (err, result) => {
+    const Client = req.session.passport.user
+    addclient(data, Client,(err, result) => {
         if (err) {
             console.log(err)
             res.send(err)
@@ -67,6 +68,21 @@ const AddShipment = (req, res) => {
         }
     })
 }
+
+const Add_Shipment_Client = (req, res) => {
+    const data = req.body;
+    const center_id = req.session.passport.user
+        AddShipments(data, center_id, (err, result) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+}
+
 
 
 
@@ -136,7 +152,7 @@ const show_all_client = (req, res) => {
 
 
 const table_for_client = async (req, res) => {
-    let id = '637cef67ec19d709b1287e32';
+    let id = req.session.passport.user;
     try {
     const result = await clients.findById(id);
     const result_shipment = await Shipment.find({EmailSource:result.email});
@@ -160,9 +176,5 @@ const table_for_client = async (req, res) => {
     console.log(err);
 }
 }
-
-// state,DateStart,ExceptionTime,cost,DistinationLocation
-
-
 
 module.exports = { newclient, deleteclient, Updateclient, AddShipment, show_complaint_byname, getallcomplaint, show_all_client, table_for_client };

@@ -29,6 +29,7 @@ passport.deserializeUser((id, done) => {
             else{
               clients.findById(id, (err, client) => {
                 if(client){
+                  console.log("add");
                   return done(err, client);
                 }
               })
@@ -174,7 +175,7 @@ passport.use(
 
 
 passport.use(
-  "client-signin",
+  "local-client",
   new localStrategy(
     {
       usernameField: "email",
@@ -183,7 +184,10 @@ passport.use(
     },
     (req, email, password, done) => {
       console.log("loign");
-      Employees.findOne({ email: email }, (error, user) => {
+      console.log(email);
+      console.log(password);
+      clients.findOne({ email: email }, (error, user) => {
+        console.log(user);
         if (error) {
           console.log("1");
           return done(error, false); // User : false
@@ -194,7 +198,7 @@ passport.use(
             null,
             false,
             req.flash("signinError", "user is not found")
-          ); // User : false
+          ); 
         }
         if (bcrypt.compareSync(password, user.password)) {
           console.log("2");

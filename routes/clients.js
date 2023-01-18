@@ -38,7 +38,7 @@ router.get('/auth', function(req, res, next) {
      res.send("Error Signed in")
    });
   
-  router.post('/login', passport.authenticate('client-signin', {
+  router.post('/login', passport.authenticate('local-client', {
     successRedirect: '/mangeclint/auth',
     failureRedirect: '/mangeclint/Failure',
     failureFlash: true,

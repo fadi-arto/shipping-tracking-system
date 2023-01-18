@@ -26,10 +26,12 @@ const ClientSchema = new mongoose.Schema(
 
     },
     gender:{
-       type:String,
-       required:true
+       type:String
 
     },
+    Centers:{
+      type:String
+    }
   },
   { timestamps: true }
 );

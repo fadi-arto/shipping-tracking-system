@@ -15,6 +15,14 @@ passport.deserializeUser((id, done) => {
         if(users){
           return done(err, users);
         }
+        else{
+          clients.findById(id, (err, client) => {
+            if(client){
+              console.log("add");
+              return done(err, client);
+            }
+          })
+        }
       });
 });
 
@@ -82,3 +90,39 @@ passport.use(
     }
   )
 );
+
+passport.use(
+  "local-client",
+  new localStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+      passReqToCallback: true,
+    },
+    (req, email, password, done) => {
+      console.log("loign");
+      clients.findOne({ email: email }, (error, user) => {
+        if (error) {
+          console.log("1");
+          return done(error, false); // User : false
+        }
+        if (!user) {
+          console.log("3");
+          return done(
+            null,
+            false,
+            req.flash("signinError", "user is not found")
+          ); 
+        }
+        if (bcrypt.compareSync(password, user.password)) {
+          console.log("2");
+          return done(null, user);
+        } else {
+          console.log("4");
+          return done(null, false, req.flash("signinError", "worng passwoed"));
+        }
+      });
+    }
+  )
+);
+
